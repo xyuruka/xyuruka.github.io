@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Imie Nazwisko (00000) - IS LAB B</title>
+    <title>Julia Chmiel (55717) - IS LAB B</title>
 
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
-
+    <input id="search-input" type="search" placeholder="Search" aria-label="Search checklist">
+    <br>
+    <div id="checklist" aria-live="polite"></div>
+    <br>
+    <form id="task-form">
+        <label for="text-input">Task:</label>
+        <input id="text-input" type="text" placeholder="Do zrobienia"
+               minlength="3" required>
+        <label for="date-input">Date:</label>
+        <input id="date-input" type="text" placeholder="DD-MM-YYYY"
+               inputmode="numeric" pattern="\d{2}-\d{2}-\d{4}"
+               title="Enter a date in DD-MM-YYYY format">
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>
