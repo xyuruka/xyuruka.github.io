@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+    <section class="welcome-panel mb-4">
+        <div>
+            <p class="eyebrow mb-2">Twoja przestrzeń</p>
+            <h1 class="page-title display-6 mb-2">Zebrane w jednym miejscu.</h1>
+            <p class="welcome-copy mb-0">Przeglądaj swoje kategorie i twórz nowe kolekcje.</p>
+        </div>
+        <div class="welcome-aside">
+            <span class="category-count">{{ categories|length }}</span>
+            <span class="count-caption">kategorii</span>
+        </div>
+    </section>
+
+    <section class="category-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow mb-1">Biblioteka</p>
+                <h2 class="page-title h4 mb-0">Twoje kategorie</h2>
+            </div>
+            <a class="btn btn-primary" href="{{ path('app_category_new') }}">Dodaj kategorię <span aria-hidden="true">+</span></a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle category-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Opis</th>
+                        <th scope="col">Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td><span class="id-tag">#{{ category.id }}</span></td>
+                        <td class="category-name">{{ category.name }}</td>
+                        <td>{{ category.description }}</td>
+                        <td class="text-nowrap">
+                            <a class="btn btn-sm btn-soft" href="{{ path('app_category_show', {'id': category.id}) }}">Podgląd</a>
+                            <a class="btn btn-sm btn-soft" href="{{ path('app_category_edit', {'id': category.id}) }}">Edytuj</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-body-secondary py-5">Brak kategorii — dodaj pierwszą, aby rozpocząć.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
